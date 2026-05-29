@@ -85,8 +85,7 @@
 
     // ─── OBRIR / TANCAR MODAL LOGIN ──────────────────────────
     window.obrirModalLogin = function() {
-        // Comprova localStorage (permanent per dispositiu)
-        if (localStorage.getItem('admin_clau')) {
+        if (sessionStorage.getItem('admin_clau')) {
             window.location.href = 'admin.html';
             return;
         }
@@ -119,8 +118,7 @@
         try {
             const res = await fetch(`${CONFIG.BASE_WORKER}/login?p=${encodeURIComponent(clauReal)}`);
             if (res.ok && (await res.text()) === 'OK') {
-                // Guardar clau real i flag superadmin al localStorage (permanent per dispositiu)
-                localStorage.setItem('admin_clau',  clauReal);
+                sessionStorage.setItem('admin_clau', clauReal);
                 localStorage.setItem('admin_super', esSuper ? 'true' : 'false');
                 tancarModalLogin();
                 window.location.href = 'admin.html';
