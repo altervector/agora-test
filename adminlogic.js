@@ -426,7 +426,7 @@
     };
 
 
- // ─── CREAR FILA ──────────────────────────────────────────
+   // ─── CREAR FILA ──────────────────────────────────────────
     const crearFila = (r) => {
         const f  = r.fields || {};
         const id = r.id || null;
@@ -436,16 +436,7 @@
 
         const getSeccio = (s) => Array.isArray(s) ? s[0] : (s || '');
 
-        // CANVI SOL·LICITAT: Calculem el color del text segons la secció de la fila
-        const seccioActual = getSeccio(f.seccio);
-        const colorTextSeccio = (typeof CONFIG !== 'undefined' && CONFIG.COLORS_SECCIONS) 
-            ? (CONFIG.COLORS_SECCIONS[seccioActual] || "#ffffff") 
-            : "#ffffff";
-
         const fila = document.createElement('tr');
-        // Apliquem el color calculat directament al text d'aquesta fila
-        fila.style.color = colorTextSeccio; 
-        
         if (id) fila.setAttribute('data-id', id);
 
         const seccions = ['Entrants', 'Primer', 'Segon','Para picar', 'Combinados', 'Cocas', 'Hamburguesas', 'Fríos', 'Postres', 'Vins Blancs','Vins Negres','Vins Rosats','Vins Escumosos','Cocteles', 'Peu'];
@@ -478,7 +469,7 @@
                 if (el.value !== valorOriginal) acumularCanvi(id, { [camp]: [el.value] }, el);
             });
         };
-
+        
         // Visible
         const cbVisible = document.createElement('input');
         cbVisible.type    = 'checkbox';
