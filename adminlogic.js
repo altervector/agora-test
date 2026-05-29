@@ -426,7 +426,7 @@
     };
 
 
-   // ─── CREAR FILA ──────────────────────────────────────────
+    // ─── CREAR FILA ──────────────────────────────────────────
     const crearFila = (r) => {
         const f  = r.fields || {};
         const id = r.id || null;
@@ -469,7 +469,7 @@
                 if (el.value !== valorOriginal) acumularCanvi(id, { [camp]: [el.value] }, el);
             });
         };
-        
+
         // Visible
         const cbVisible = document.createElement('input');
         cbVisible.type    = 'checkbox';
@@ -487,6 +487,10 @@
         const tdNom = document.createElement('td');
         tdNom.className = 'col-nom';
         tdNom.appendChild(inputNom);
+
+        // ─── Color de secció (del diccionari CONFIG.COLORS_SECCIONS) ─
+        const colorSeccio = (CONFIG.COLORS_SECCIONS && CONFIG.COLORS_SECCIONS[getSeccio(f.Seccio)]) || '#eee';
+        inputNom.style.color = colorSeccio;
 
         // Ordre (només visible si esSuper)
         const inputOrdre = document.createElement('input');
@@ -536,6 +540,7 @@
             sel.appendChild(opt);
         });
         onChangeSel('Seccio', sel);
+        sel.style.color = colorSeccio;
         const tdSeccio = document.createElement('td');
         tdSeccio.className = 'col-seccio';
         tdSeccio.appendChild(sel);
