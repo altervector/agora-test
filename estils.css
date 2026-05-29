@@ -1,0 +1,425 @@
+/* ============================================================
+   ESTILS.CSS - Plantilla moderna per a negocis
+   Paleta: verd fosc + daurat + crema
+   ============================================================ */
+
+/* ─── 1. VARIABLES ────────────────────────────────────────── */
+/*@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');*/
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('https://avsets.pages.dev/fonts/Comfortaa-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    
+    /*  COLORS  */
+    --boto_hero_hover:      #2c3e35;   /*  VERD OLIVA  */
+    --color-daurat:         #c8973a;   /*NAV-menu a:hover||hero-boto||seccio-titol||menu-bloc-text h3||footer a||footer-poweredby a*/
+    --color-blanc:          #ffffff;   /*navbar-logo||navbar-hamburguesa||navbar-menu a||hero-contingut||hero-boto||seccio-text||menu-bloc-text p||footer-nom||*/
+    --color-blanc-transp:   rgba(255, 255, 255, 0.586);  /*footer-poweredby*/
+    --color-blau-fosc:      #1d0047;
+    --color-blau-transp:    rgba(3, 1, 51, 0.55);  /*navbar.scrolled||navbar-menu.obert||seccio-titol(border)||footer*/
+            /*--color-fons:       #f8f5f0;*/
+            /*--color-fons-alt:   #ffffff;*/
+    
+    
+
+            /*--font-titol:       'Georgia', serif;*/
+    --font-titol:       'Comfortaa', sans-serif;
+    --font-cos:         'Segoe UI', Roboto, sans-serif;
+
+    --amplada-max:      100%;
+    --radi:             10px;
+    --ombra:            0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* ─── 2. RESET I BASE ─────────────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-image: url("https://avsets.pages.dev/images/agora/background-agora.jpg");
+
+    
+    background-attachment: fixed;
+    background-size: cover;                    
+    background-position: center;
+    min-height: 100%;
+}
+
+body {
+    font-family: var(--font-cos);
+    background-color: transparent;
+    color: var(--color-text);
+    max-width: var(--amplada-max);
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--seccio-text);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ─── 3. NAVBAR ───────────────────────────────────────────── */
+.navbar {
+    background-color: transparent;
+    padding: 15px calc((100% - var(--amplada-max)) / 2 + 20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: var(--color-blau-transp);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 15px calc((100% - var(--amplada-max)) / 2 + 20px);
+}
+
+.navbar-logo {
+    color: var(--color-blanc);
+    font-family: var(--font-titol);
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.navbar-logo img {
+    height: 55px;
+    width: auto;
+}
+
+.navbar-menu {
+    display: none;
+    gap: 20px;
+    list-style: none;
+}
+
+.navbar-hamburguesa {
+    background: none;
+    border: none;
+    color: var(--color-blanc);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.navbar-menu.obert {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background:var(--color-blau-transp);
+    padding: 20px;
+    gap: 16px;
+    z-index: 99;
+    align-items: flex-end;
+}
+
+.navbar-menu a {
+    color: var(--color-blanc);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.navbar-menu a:hover {
+    color: var(--color-daurat);
+    text-decoration: none;
+}
+
+/* ─── 4. HERO ─────────────────────────────────────────────── */
+.hero {
+    position: relative;
+     margin-top: 0px;
+     /*padding-top: 70px;*/
+     margin-inline: auto;                     /*xxx*/
+     width: 100%;                              /*xxx*/
+    height: 100vh;
+    min-height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    outline: 0px solid red !important;      /*xxx*/
+}
+
+.hero-imatge {
+    position: absolute;
+    top: 0; left: 0;
+    /*padding: 40px 60px;                     /*xxx*/
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+}
+
+.hero-contingut {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    color: var(--color-blanc);
+}
+
+.hero-titol {
+    font-family: var(--font-titol);
+    font-weight: 800;
+    font-size:5rem;
+    letter-spacing: 3px;
+    /*text-transform: uppercase;*/
+    margin-bottom: 10px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-slogan {
+    font-size: 1rem;
+    color: var(--color-blanc-transp);
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.hero-boto {
+    display: inline-block;
+    background: var(--color-daurat);
+    color: var(--color-blanc);
+    padding: 12px 30px;
+    border-radius: var(--radi);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.2s;
+}
+
+.hero-boto:hover {
+    background: var(--boto_hero_hover);
+    text-decoration: none;
+}
+
+/* ─── 5. SECCIONS ─────────────────────────────────────────── */
+.seccio {
+          /*max-width: 800px;*/
+   margin: 0 auto;
+   padding: 40px 50px;
+   scroll-margin-top: 70px;
+}
+
+.seccio-alt {
+    background-color: transparent;
+}
+
+.seccio-titol {
+    font-family: var(--font-titol);
+    font-size: 1.5rem;
+    color: var(--color-daurat);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-blau-transp);
+}
+
+.seccio-text {
+    font-size: 15px;
+    color: var(--color-blanc);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* ─── 6. BLOCS DE MENÚ ───────────────────────────────────── */
+.menus-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.menu-bloc {
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.menu-bloc a {
+    color: inherit;
+    text-decoration: none;
+    display: block; outline: 0px solid red !important;
+}
+
+.menu-bloc a:hover {
+    text-decoration: none;
+}
+
+.menu-bloc-imatge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu-bloc-text {
+    padding: 12px 0;
+}
+
+.menu-bloc-text h3 {
+    font-family: var(--font-titol);
+    font-size: 1.1rem;
+    color: var(--color-daurat);
+    margin-bottom: 6px;
+}
+
+.menu-bloc-text p {
+    font-size: 14px;
+    color: var(--color-blanc);
+    line-height: 1.6;
+}
+
+/* ─── 7. SEPARADOR ────────────────────────────────────────── */
+.separador {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin: 0;
+}
+
+/* ─── 7. FOOTER ───────────────────────────────────────────── */
+.footer {
+    background-color: var(--color-blau-transp);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: rgba(255,255,255,0.75);
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-nom {
+    font-family: var(--font-titol);
+    font-size: 18px;
+    color: var(--color-blanc);
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: var(--color-daurat);
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-qr {
+    width: 55px;
+   margin: 20px auto 0 auto;
+}
+.footer-qr img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.footer-poweredby {
+    margin-top: 30px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-blanc-transp);
+}
+
+.footer-poweredby a {
+    color: var(--color-daurat);
+}
+
+.icona-app {
+    width: 24px;            /* Mida de la icona (pots posar 20px o 30px segons gust) */
+    height: auto;           /* MantÃ© la proporciÃ³ */
+    vertical-align: middle; /* Alinear verticalment amb el text del costat */
+    margin-right: 8px;      /* Un petit espai de separaciÃ³ entre la icona i el text */
+    display: inline-block;  /* Assegura que es comporti bÃ© dins la lÃ­nia */
+}
+
+#visites:not(:empty)::before {
+    content: " · ";
+}
+
+#visites {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+
+/* ─── SPINNER ─────────────────────────────────────── */
+@keyframes gir {
+    to { transform: rotate(360deg); }
+}
+
+/* ── TABLET (a partir de 768px) ── */
+@media (min-width: 768px) {
+    .seccio {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 50px;
+    }
+}
+
+/* ── PC (a partir de 1024px) ── */
+@media (min-width: 1024px) {
+    .navbar-logo img {
+        height: 70px;
+        width: auto;
+    }
+
+    .navbar-menu {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .navbar-menu a {
+    font-size: 16px; /* Modifica aquest número (18, 19, 20...) fins que el vegis al teu gust */
+    }
+
+    .navbar-hamburguesa {
+            display: none;
+    }
+
+    .hero-titol {
+    font-size:8rem;
+    }
+
+   .seccio {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 50px;
+    }
+
+    .menu-bloc-imatge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+}
