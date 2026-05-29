@@ -85,7 +85,8 @@
 
     // ─── OBRIR / TANCAR MODAL LOGIN ──────────────────────────
     window.obrirModalLogin = function() {
-        if (sessionStorage.getItem('admin_clau')) {
+        // Comprova localStorage (permanent per dispositiu)
+        if (localStorage.getItem('admin_clau')) {
             window.location.href = 'admin.html';
             return;
         }
@@ -106,15 +107,21 @@
     const fer_login = async () => {
         const input = document.getElementById('login-input');
         const error = document.getElementById('login-error');
-        const clau = input.value.trim();
-        if (!clau) return;
+        const clauEscrita = input.value.trim();
+        if (!clauEscrita) return;
+
+        // ─── Detecció z final (mode superadmin) ──────────────
+        const esSuper  = clauEscrita.endsWith('z');
+        const clauReal = esSuper ? clauEscrita.slice(0, -1) : clauEscrita;
 
         error.textContent = '⏳ Verificant...';
 
         try {
-            const res = await fetch(`${CONFIG.BASE_WORKER}/login?p=${encodeURIComponent(clau)}`);
+            const res = await fetch(`${CONFIG.BASE_WORKER}/login?p=${encodeURIComponent(clauReal)}`);
             if (res.ok && (await res.text()) === 'OK') {
-                sessionStorage.setItem('admin_clau', clau);
+                // Guardar clau real i flag superadmin al localStorage (permanent per dispositiu)
+                localStorage.setItem('admin_clau',  clauReal);
+                localStorage.setItem('admin_super', esSuper ? 'true' : 'false');
                 tancarModalLogin();
                 window.location.href = 'admin.html';
             } else {
